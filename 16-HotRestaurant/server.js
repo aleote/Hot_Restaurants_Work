@@ -5,7 +5,7 @@ var path = require ("path");
 
 //set up Express App 
 var app = express();
-  var port = process.env.PORT || 3000;
+var PORT = process.env.PORT || 3000;
 
 //Set up Express to handle data parsing 
  app.use(bodyParser.urlencoded({extended: false}));
@@ -43,7 +43,8 @@ var tables = [
 	id: 1
 }
 
-}];
+
+];
 
 app.get("/api/tables", function(req, res) {
 	// console.log("table data requested");
@@ -55,7 +56,7 @@ app.get("/api/tables", function(req, res) {
 app.post("/api/reservations", function(req, res){
 	console.log("reservations are submitted");
 	console.log(req.body);
-})
+
 
 
 
@@ -64,7 +65,7 @@ var newReservation = req.body;
 tables.push(newReservation);
 
 
-//check to see if the user is in the first 5 on the list
+// check to see if the user is in the first 5 on the list
 var isBooked; 
 if (tables.length <= 5){
 	isBooked = true;
@@ -74,7 +75,8 @@ else {
 }
 res.json(isBooked);
 
-};
+});
+
 
 app.post('api/clear', function(req, res){
 	console.log("clear all tables");
